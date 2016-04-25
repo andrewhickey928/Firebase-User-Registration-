@@ -1,0 +1,69 @@
+<!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<!-- Firebase -->
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+
+<script>
+var myRef = new Firebase("https://blinding-fire-9819.firebaseio.com/");
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+  if (error) {
+    // an error occurred while attempting login
+    console.log(error);
+  } else if (user) {
+    // user authenticated with Firebase
+    console.log("User ID: " + user.uid + ", Provider: " + user.provider);
+  } else {
+    // user is logged out
+  }
+});
+
+
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { ... });
+authClient.createUser(email, password, function(error, user) {
+  if (error === null) {
+    console.log("User created successfully:", user);
+  } else {
+    console.log("Error creating user:", error);
+  }
+});
+
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { ... });
+authClient.login('password', {
+  email: '<email@domain.com>',
+  password: '<password>'
+});
+
+var authRef = new Firebase("https://blinding-fire-9819.firebaseio.com/.info/authenticated");
+authRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    alert("authenticated");
+  } else {
+    alert("not authenticated");
+  }
+});
+
+authClient.login("<provider>"); // this could be "facebook", "twitter", "password", etc...
+
+
+</script>
+
+
+<div ng-app="sampleApp" ng-controller="SampleCtrl">
+  Email: <input type="text" ng-model="email">
+  Password: <input type="text" ng-model="password">
+
+  <br><br>
+
+  <button ng-click="createUser()">Create User</button>
+
+  <br><br>
+
+  <button ng-click="removeUser()">Remove User</button>
+
+  <p ng-if="message">Message: <strong>{{ message }}</strong></p>
+  <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+</div>

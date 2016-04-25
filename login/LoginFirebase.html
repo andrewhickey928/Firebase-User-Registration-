@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+<!-- Firebase -->
+<script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+
+<!-- Firebase Simple Login -->
+<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+
+<script>
+document.write("Hello")
+var myRef = new Firebase("https://blinding-fire-9819.firebaseio.com/");
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+  if (error) {
+    // an error occurred while attempting login
+    console.log(error);
+  } else if (user) {
+    // user authenticated with Firebase
+    console.log("User ID: " + user.uid + ", Provider: " + user.provider);
+  } else {
+    // user is logged out
+  }
+});
+
+
+function showLoginBox() {
+  ...
+  // Do whatever DOM operations you need to show the login/registration box.
+  $("#registerButton").on("click", function() {
+    var email = $("#email").val();
+    var password = $("#password").val();
+    authClient.createUser(email, password, function(error,  user) {
+      if (!error) {
+        doLogin(user);
+      } else {
+        alert(error);
+      }
+    });
+  });
+}
+
+
+</script>
+
+
+
+
+
+<noscript>Sorry, your browser does not support JavaScript!</noscript>
+</body>
+</html>

@@ -1,0 +1,41 @@
+command Prompt Notes:
+
+1. ctrl+r ->type in program you want to open
+2. to compare two simplier text files -> fc /1 "C:\fraps\example1.txt" "C:\fraps\example2.txt"
+3. "Ipconfig"-command relays the IP address that your computer is currently using.  However, if you're behind a
+	routers (like most computers today), you'll instead receive the local network addrss of the router
+	
+	Still, ipconfig is useful because of its extensions. "ipconfig/release" follow by 
+	"ipconfig/renew" can force your Widnows PC into asking for a new IP address, which is useful if your
+	computer claims one isn't available.  You can also use "ipconfig/flushdns" to refresh your DNS address.
+	These commands are great if the Windows network troubleshooter chokes, which does happen on occasion.
+4. Ping/Pathping/tracert are good to test connection to IP address or web domain
+5. "Tasklist"-provides current list of all tasks running on your PC
+6. Taskkill-command that force stops a program with "taskkill -im" follow by the executable name or "taskkill -pid"
+	followed by the process ID.
+7. Shutdown-shuts down computer
+8. Shutdown /r /o-restarts PC and launches the Advanced Start Options menu to access Safe Mode and Windows recovery utilities.
+
+pwd        -print working directory
+hostname   -my computer's network name
+mkdir      -make directory
+cd         -change directory
+ls         -list directory
+rmdir      -remove directory
+pushd      -push directory
+popd       -pop directory
+cp         -copy a file or directory
+robocopy   -robust copy
+mv         -move a file or directory
+more       -page through a file
+type       -print the whole file
+forfiles   -run a command on lots of files
+dir -r     -find files-select-string-find things inside files
+help       - read a manual page
+helpctr    -find what man page is appropriate
+echo       -print some arguments
+set        -export/set a new environment variable
+exit       -exit the shell
+runas      -DANGER! become super user root DANGER!
+attrib     -change permission modifiers
+iCACLS     -change ownership

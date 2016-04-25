@@ -1,0 +1,20 @@
+Atom Editor
+
+Command prompt: (ctrl+r) "cmd"
+	1. "atom" opens up blank atom script
+	2. "atom index.html" opens html code
+	3. Ctrl p->search for files
+	4. Hold ctrl and selected different points->multiple cursors
+	5. "atom help" in cmd to see list of commands
+	6. "apm install XXX" to install in cmd
+	7. 
+
+Package:"Script"
+	1. shift-ctrl-b   ->script run
+	2. shift-ctrl-j   ->run by line number
+	3. shift-ctrl-o   ->run the selection or whole file with the give options
+	4. shift-ctrl-b   ->runs the selection or whole file with the specificied profile
+	5. esc            ->close the script view window
+	6. ctrl-1         ->kills the current script process
+
+to run python, the folder must be open:Windows(C:)>Program Files(x86)>Python3.5.1

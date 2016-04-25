@@ -1,0 +1,3 @@
+npm install firebase-token-generator --save
+-> had to save firebase.js 
+-> need node.js

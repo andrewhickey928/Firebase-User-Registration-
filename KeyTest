@@ -1,0 +1,3 @@
+var fredRef = new Firebase("https://samplechat.firebaseio-demo.com/users/fred");
+var key = fredRef.key();  // key === "fred"
+key = fredRef.child("name/last").key();  // key === "last"

@@ -1,0 +1,70 @@
+<p>
+  text1
+</p>
+<body>
+
+<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script>
+var myRef = new Firebase("https://blinding-fire-9819.firebaseio.com/");
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+  if (error) {
+    // an error occurred while attempting login
+    console.log(error);
+  } else if (user) {
+    // user authenticated with Firebase
+    console.log("User ID: " + user.uid + ", Provider: " + user.provider);
+  } else {
+    // user is logged out
+  }
+});
+
+authRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    alert("authenticated");
+  } else {
+    alert("not authenticated");
+  }
+});
+
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { ... });
+authClient.createUser(email, password, function(error, user) {
+  if (error === null) {
+    console.log("User created successfully:", user);
+  } else {
+    console.log("Error creating user:", error);
+  }
+});
+
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { ... });
+authClient.login('password', {
+  email: '<email@domain.com>',
+  password: '<password>'
+});
+
+authClient.login("<provider>"); // this could be "facebook", "twitter", "password", etc...
+
+// we would probably save a profile when we register new users on our site
+// we could also read the profile to see if it's null
+// here we will just simulate this with an isNewUser boolean
+var isNewUser = true;
+var myRef = new Firebase("https://<your-firebase>.firebaseio.com");
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+  if (error) { ... }
+  else if (user) {
+    if( isNewUser ) {
+      // save new user's profile into Firebase so we can
+      // list users, use them in security rules, and show profiles
+      myRef.child('users').child(user.uid).set({
+        displayName: user.displayName,
+        provider: user.provider,
+        provider_id: user.id
+      });
+    }
+  }
+  else { ... }
+}
+
+</script>
+
+</body>
